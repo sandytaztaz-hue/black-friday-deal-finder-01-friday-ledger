@@ -3,55 +3,69 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Friday Ledger — Real Black Friday Deals, Checked Price by Price</title>
-<meta name="description" content="A Black Friday deal finder where every price was checked on 27 November 2026 across five stores, with an honest verdict on each deal.">
-<link rel="stylesheet" href="./style.css">
+<title>The Friday Ledger — Real Black Friday deals, checked price by price</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="masthead">
-  <div class="masthead-inner">
-    <p class="dateline">FRIDAY 27 NOVEMBER 2026 · BLACK FRIDAY · FIVE STORES · EVERY PRICE CHECKED TODAY</p>
-    <h1>The Friday Ledger</h1>
-    <p class="tagline">Real Black Friday deals, checked price by price — and an honest verdict on each one.</p>
-  </div>
+  <p class="dateline">Friday 27 November 2026 &middot; Black Friday &middot; Five stores &middot; Every price checked today</p>
+  <h1 class="site-title">The Friday Ledger</h1>
+  <p class="tagline">Real Black Friday deals, checked price by price &mdash; and an honest verdict on each one.</p>
 </header>
 
-<section class="stats" aria-label="Ledger totals">
-  <div class="stat"><span class="stat-num" id="stat-deals">–</span><span class="stat-word">deals checked</span></div>
-  <div class="stat"><span class="stat-num" id="stat-stores">–</span><span class="stat-word">stores</span></div>
-  <div class="stat"><span class="stat-num" id="stat-categories">–</span><span class="stat-word">categories</span></div>
-  <div class="stat"><span class="stat-num" id="stat-biggest">–</span><span class="stat-word">biggest cut</span></div>
-  <div class="stat"><span class="stat-num" id="stat-average">–</span><span class="stat-word">average cut</span></div>
+<section class="stats" aria-label="Checking summary">
+  <div class="stat">
+    <p class="stat-number" id="stat-deals">37</p>
+    <p class="stat-label">Deals checked</p>
+  </div>
+  <div class="stat">
+    <p class="stat-number" id="stat-stores">5</p>
+    <p class="stat-label">Stores</p>
+  </div>
+  <div class="stat">
+    <p class="stat-number" id="stat-categories">8</p>
+    <p class="stat-label">Categories</p>
+  </div>
+  <div class="stat">
+    <p class="stat-number" id="stat-biggest">&ndash;67%</p>
+    <p class="stat-label">Biggest cut</p>
+  </div>
+  <div class="stat">
+    <p class="stat-number" id="stat-average">&ndash;35%</p>
+    <p class="stat-label">Average cut</p>
+  </div>
 </section>
 
-<main>
-  <section class="toolbar" aria-label="Search and filter deals">
-    <div class="search-row">
-      <label class="search-label" for="search">Search the ledger</label>
-      <input id="search" type="search" placeholder="Try airpods, dyson, tv or watch" autocomplete="off">
-      <button id="clear-filters" type="button">Clear all</button>
-    </div>
-    <div class="chip-row" id="filter-category"></div>
-    <div class="chip-row" id="filter-store"></div>
-    <div class="chip-row" id="filter-off"></div>
-    <p class="result-count" id="result-count" aria-live="polite"></p>
-  </section>
-
-  <section id="grid" class="grid" aria-label="Deals"></section>
-
-  <div id="empty" class="empty" hidden>
-    <h2>No deals match that search.</h2>
-    <p>Try a shorter word, clear a filter, or browse the whole ledger — all 37 deals are one click away.</p>
+<div class="toolbar">
+  <div class="search-row">
+    <input id="search" class="search" type="search" placeholder="Try airpods, dyson, tv" aria-label="Search deals" autocomplete="off">
+    <button id="clear-filters" class="clear-btn" type="button">Clear all</button>
   </div>
 
-  <section id="detail" hidden aria-label="Deal details"></section>
-</main>
+  <div class="filter-row" id="category-filters" data-filter-group="category">
+    <div id="filter-category" class="chip-set"></div>
+  </div>
 
-<footer>
-  <p><strong>How this ledger was made.</strong> Every price above was read on Friday 27 November 2026 from the named store or a deals source that names the store, and the check time sits on every card. The discount is worked out from the sale price and the usual price; the verdict is an honest call — <span class="verdict verdict-real">Real deal</span> means 30% off or more off a genuine usual price, <span class="verdict verdict-good">Good cut</span> means 15–29% off, and <span class="verdict verdict-thin">Thin — check twice</span> means under 15%, or a small cut on a brand-new product. Prices move during Black Friday week, so the store’s own page is the final word before you buy.</p>
-  <p class="colophon">The Friday Ledger · an independent ledger of checked prices · not affiliated with any store named here.</p>
-</footer>
+  <div class="filter-row" id="store-filters" data-filter-group="store">
+    <div id="filter-store" class="chip-set"></div>
+  </div>
 
-<script type="module" src="./main.js"></script>
+  <div class="filter-row" id="discount-filters" data-filter-group="discount">
+    <div id="filter-off" class="chip-set"></div>
+  </div>
+</div>
+
+<p class="result-count" id="result-count">37 deals &middot; checked 27 Nov 2026, 16:00 WIT</p>
+
+<main class="grid" id="grid"></main>
+
+<div class="empty" id="empty" hidden>
+  <p class="empty-title">No deals match those filters.</p>
+  <p class="empty-text">Try clearing the search or choosing a different filter &mdash; all 37 checked deals are still listed on the main page.</p>
+</div>
+
+<section class="detail" id="detail" hidden></section>
+
+<script type="module" src="main.js"></script>
 </body>
 </html>
