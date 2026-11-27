@@ -1,0 +1,32 @@
+{
+  "shots": [
+    {
+      "file": "1-cover.jpg",
+      "hash": "#/?q=apple&store=Amazon",
+      "height": 800,
+      "view": "Deal grid, desktop 1280x800: search box holding the query “apple”, the Amazon store chip active, 10 matching deals with the first six fully readable",
+      "width": 1280
+    },
+    {
+      "file": "2-filtered.jpg",
+      "hash": "#/?off=40",
+      "height": 800,
+      "view": "Deal grid, desktop 1280x800: the “40% off or more” discount chip active, 17 matching deals and the result count",
+      "width": 1280
+    },
+    {
+      "file": "3-deal.jpg",
+      "hash": "#/deal/dyson-v9-amazon",
+      "height": 800,
+      "view": "Deal detail page, desktop 1280x800: the Dyson V9 Motorbar at Amazon, price, discount, verdict and the plain-language reason for it",
+      "width": 1280
+    },
+    {
+      "file": "4-phone.jpg",
+      "hash": "#/",
+      "height": 844,
+      "view": "Deal grid on a phone, 390x844: single-column cards with the search box, stats strip and verdict chips",
+      "width": 390
+    }
+  ]
+}
