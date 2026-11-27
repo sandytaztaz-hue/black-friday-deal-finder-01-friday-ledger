@@ -3,69 +3,86 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Friday Ledger — Real Black Friday deals, checked price by price</title>
+<title>The Friday Ledger — 74 real Black Friday deals, re-checked tonight</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="masthead">
-  <p class="dateline">Friday 27 November 2026 &middot; Black Friday &middot; Five stores &middot; Every price checked today</p>
-  <h1 class="site-title">The Friday Ledger</h1>
-  <p class="tagline">Real Black Friday deals, checked price by price &mdash; and an honest verdict on each one.</p>
+  <div class="wrap masthead-row">
+    <div class="masthead-title">
+      <h1>The Friday Ledger</h1>
+      <p class="tagline">Every real deal, checked by hand — with an honest verdict on each price.</p>
+    </div>
+    <p class="checked" id="checked-line">Checked tonight, 28 Nov 2026</p>
+  </div>
 </header>
 
-<section class="stats" aria-label="Checking summary">
-  <div class="stat">
-    <p class="stat-number" id="stat-deals">37</p>
-    <p class="stat-label">Deals checked</p>
-  </div>
-  <div class="stat">
-    <p class="stat-number" id="stat-stores">5</p>
-    <p class="stat-label">Stores</p>
-  </div>
-  <div class="stat">
-    <p class="stat-number" id="stat-categories">8</p>
-    <p class="stat-label">Categories</p>
-  </div>
-  <div class="stat">
-    <p class="stat-number" id="stat-biggest">&ndash;67%</p>
-    <p class="stat-label">Biggest cut</p>
-  </div>
-  <div class="stat">
-    <p class="stat-number" id="stat-average">&ndash;35%</p>
-    <p class="stat-label">Average cut</p>
-  </div>
-</section>
+<main class="wrap">
+  <section class="stats" aria-label="Ledger totals">
+    <div class="stat"><span class="stat-num" id="stat-deals">–</span><span class="stat-label">deals checked</span></div>
+    <div class="stat"><span class="stat-num" id="stat-save">–</span><span class="stat-label">total savings</span></div>
+    <div class="stat"><span class="stat-num" id="stat-deep">–</span><span class="stat-label">deepest discount</span></div>
+    <div class="stat"><span class="stat-num" id="stat-stores">–</span><span class="stat-label">stores covered</span></div>
+  </section>
 
-<div class="toolbar">
-  <div class="search-row">
-    <input id="search" class="search" type="search" placeholder="Try airpods, dyson, tv" aria-label="Search deals" autocomplete="off">
-    <button id="clear-filters" class="clear-btn" type="button">Clear all</button>
-  </div>
+  <section id="browse-view">
+    <div class="controls">
+      <label class="search-box">
+        <span class="visually-hidden">Search deals</span>
+        <input id="search" type="search" placeholder="Search a product, store or category…" autocomplete="off">
+      </label>
+      <label class="ctl">Store
+        <select id="store-filter">
+          <option value="All">All stores</option>
+        </select>
+      </label>
+      <label class="ctl">Discount
+        <select id="pct-filter">
+          <option value="0">Any discount</option>
+          <option value="30">30% or more</option>
+          <option value="50">50% or more</option>
+        </select>
+      </label>
+      <label class="ctl">Sort
+        <select id="sort">
+          <option value="save">Biggest saving</option>
+          <option value="pct">Biggest % off</option>
+          <option value="price">Lowest price</option>
+          <option value="new">Newest checked</option>
+        </select>
+      </label>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Category"></div>
 
-  <div class="filter-row" id="category-filters" data-filter-group="category">
-    <div id="filter-category" class="chip-set"></div>
-  </div>
+    <div class="content">
+      <div class="main-col">
+        <div class="section-head">
+          <h2>All deals</h2>
+          <span id="result-count" class="count"></span>
+        </div>
+        <div class="grid" id="grid"></div>
+        <p class="method">How we check: every price above was read from the store's own Black Friday listing or a deals roundup naming that store on 27–28 Nov 2026. “Usual price” is the retailer's own comparison price. A GENUINE verdict means a deep cut or a very large cash saving; WEAK means the cut is small and the headline flatters it. Prices move fast — the store page is the final word.</p>
+      </div>
+      <aside class="rail" aria-label="Top savings">
+        <h2>Top savings</h2>
+        <p class="rail-sub">The five biggest cash savings in the ledger.</p>
+        <ol class="top-list" id="top-list"></ol>
+        <div class="rail-note">
+          <h3>Why trust this ledger?</h3>
+          <p>No made-up prices. No “was £999” theatre without a check. Every card names its store, its sale event and the night it was checked — and every verdict is computed from the two prices on the card.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
 
-  <div class="filter-row" id="store-filters" data-filter-group="store">
-    <div id="filter-store" class="chip-set"></div>
-  </div>
+  <section id="detail-view" hidden></section>
+</main>
 
-  <div class="filter-row" id="discount-filters" data-filter-group="discount">
-    <div id="filter-off" class="chip-set"></div>
-  </div>
-</div>
+<footer class="wrap footer">
+  <p>The Friday Ledger · Black Friday 2026 · Prices checked 28 Nov 2026 · Deals run through Cyber Monday, 30 Nov 2026 at most stores.</p>
+</footer>
 
-<p class="result-count" id="result-count">37 deals &middot; checked 27 Nov 2026, 16:00 WIT</p>
-
-<main class="grid" id="grid"></main>
-
-<div class="empty" id="empty" hidden>
-  <p class="empty-title">No deals match those filters.</p>
-  <p class="empty-text">Try clearing the search or choosing a different filter &mdash; all 37 checked deals are still listed on the main page.</p>
-</div>
-
-<section class="detail" id="detail" hidden></section>
-
-<script type="module" src="main.js"></script>
+<script src="data.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
